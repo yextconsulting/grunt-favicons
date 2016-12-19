@@ -40,6 +40,9 @@ module.exports = function(grunt) {
             indent: "\t",
             timestamp: false,
             truncateHTML: false,
+
+            pwa: true,
+            pwaManifest: "",
             getLowResolutionImagePath: function (srcFilePath, size) {
                 var extname = path.extname(srcFilePath);
                 return path.join(path.dirname(srcFilePath), path.basename(srcFilePath, extname) + '.' + size + extname);
@@ -58,7 +61,7 @@ module.exports = function(grunt) {
         var convert = function(args) {
             args.unshift("convert");
             var ret = execute(args.join(" "));
-            if (ret.code === 127) {
+            if (ret.code === 127 || ) {
                 return grunt.warn(
                     'You need to have ImageMagick installed in your PATH for this task to work.'
                 );
@@ -126,6 +129,7 @@ module.exports = function(grunt) {
                     var name = $(this).attr('name');
                     if(name && (name === 'msapplication-TileImage' ||
                                 name === 'msapplication-TileColor' ||
+                                name === 'mobile-web-app-capable' ||
                                 name.indexOf('msapplication-square') >= 0)) {
                         $(this).remove();
                     }
@@ -181,7 +185,7 @@ module.exports = function(grunt) {
                         if (fs.existsSync(lowResolutionImagePath)) {
                             src = lowResolutionImagePath;
                         }
-                        convert([src, '-resize', size, saveTo]);
+                        convert(['-background none', src, '-resize', size, saveTo]);
                         files.push(saveTo);
                     });
                     grunt.log.ok();
@@ -198,7 +202,7 @@ module.exports = function(grunt) {
 
                     // 64x64 favicon.png higher priority than .ico
                     grunt.log.write('favicon.png... ');
-                    convert([source, '-resize', "64x64", path.join(f.dest, 'favicon.png')]);
+                    convert(['-background none', source, '-resize', "64x64", path.join(f.dest, 'favicon.png')]);
                     grunt.log.ok();
                 }
 
@@ -250,6 +254,11 @@ module.exports = function(grunt) {
                     grunt.log.write('apple-touch-icon-152x152-precomposed.png... ');
                     convert(combine(source, f.dest, "152x152", "apple-touch-icon-152x152-precomposed.png", additionalOpts, options.appleTouchPadding));
                     grunt.log.ok();
+
+	                // 180x180: iPhone 6 Plus retina iOS 8 and higher
+	                grunt.log.write('apple-touch-icon-180x180-precomposed.png... ');
+	                convert(combine(source, f.dest, "180x180", "apple-touch-icon-180x180-precomposed.png", additionalOpts, options.appleTouchPadding));
+	                grunt.log.ok();
                 }
 
                 // 228x228: Coast
@@ -265,7 +274,7 @@ module.exports = function(grunt) {
                     convert(combine(source, f.dest, "192x192", "homescreen-192x192.png", additionalOpts));
                     grunt.log.ok();
                 }
-                
+
                 // Android Icons app
                 if (options.androidIcons) {
                     // 36x36: LDPI
@@ -327,6 +336,47 @@ module.exports = function(grunt) {
                     grunt.log.ok();
                 }
 
+
+	            // Progressive Web Application
+	            if (options.pwa) {
+		            var updatePWAManifest = (options.pwaManifest !== undefined && options.pwaManifest !== ''),
+			            contentPWA;
+
+		            if (updatePWAManifest) {
+			            var contentsPWA = (grunt.file.exists(options.pwaManifest)) ? grunt.file.read(options.pwaManifest) : '{}';
+			            contentPWA = JSON.parse(contentsPWA);
+			            contentPWA.icons = [];
+		            }
+
+		            ['48', '72', '96', '128', '144', '192', '256'].forEach(function(size) {
+			            var dimensions = size + 'x' + size;
+			            var fifname = "pwa-icon-" + dimensions + ".png";
+			            grunt.log.write(fifname + '... ');
+			            convert(combine(source, f.dest, dimensions, fifname, []));
+
+			            if (updatePWAManifest) {
+				            contentPWA.icons.push({
+                                "src": options.HTMLPrefix + fifname,
+                                "sizes": dimensions,
+                                "type": "image/png"
+                            });
+			            }
+
+			            grunt.log.ok();
+		            });
+
+		            if (updatePWAManifest) {
+			            grunt.log.write('Updating PWA manifest... ');
+
+			            fs.writeFileSync(options.pwaManifest, JSON.stringify(contentPWA, null, 2));
+		            }
+
+		            grunt.log.ok();
+	            }
+
+
+
+
                 ////// Windows 8 Tile
 
                 if (options.windowsTile) {
@@ -375,6 +425,8 @@ module.exports = function(grunt) {
 
                 }
 
+
+
                 // Append icons to <HEAD>
                 if (needHTML) {
                     grunt.log.write('Updating HTML... ');
@@ -415,7 +467,7 @@ module.exports = function(grunt) {
 
                     // Android Homescreen app
                     if (options.androidHomescreen) {
-                      elements += options.indent + "<meta name=\"mobile-web-app-capable\" value=\"yes\" />\n";
+                      elements += options.indent + "<meta name=\"mobile-web-app-capable\" content=\"yes\" />\n";
                       elements += options.indent + "<link rel=\"icon\" sizes=\"192x192\" href=\"" + options.HTMLPrefix + "homescreen-192x192.png" + (options.timestamp ? timestamp : '') + "\" />\n";
                     }
 

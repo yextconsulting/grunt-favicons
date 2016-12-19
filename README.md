@@ -1,6 +1,14 @@
 # grunt-favicons
 
-[![Build Status](https://api.travis-ci.org/gleero/grunt-favicons.png?branch=master)](https://travis-ci.org/gleero/grunt-favicons) [![NPM version](https://badge.fury.io/js/grunt-favicons.png)](http://badge.fury.io/js/grunt-favicons)
+Clone of gleeros excellent grunt-favicons project!
+Includes multiple improvements;
+- (new) iphonePlus support
+- (new) progressive web application (pwa) icon generation & manifest writing
+- (fix) svg transparency
+- (fix) no 'false' values in icons.html
+- (fix) typo in meta tag causing validation errors
+
+
 
 Generates all known types and sizes icons from PNG image. Uses ImageMagick.
 
@@ -18,6 +26,7 @@ Generates all known types and sizes icons from PNG image. Uses ImageMagick.
 - `apple-touch-icon-120x120.png` (120x120) — iPhone retina, iOS 7 and higher;
 - `apple-touch-icon-144x144.png` (144x144) — iPad retina;
 - `apple-touch-icon-152x152.png` (152x152) — iPad retina iOS 7;
+- `apple-touch-icon-180x180.png` (180x180) — iPhone 6 Plus retina iOS 8 and higher;
 - `windows-tile-144x144.png` (144x144) — Windows 8 tile;
 - `coast-icon-228x228.png` (228x228) - Coast browser;
 - `firefox-icon-16x16.png` (16x16) - Firefox on Android / Windows;
@@ -206,6 +215,23 @@ Default value: `false`
 
 Make [Android Homescreen](https://developer.chrome.com/multidevice/android/installtohomescreen) app icon.
 
+
+#### options.pwa
+Type: `Boolean`
+Default value: `false`
+
+Add icons for [Progressive Web Application](https://developer.mozilla.org/en-US/Apps/Progressive).
+
+#### options.pwaManifest
+Type: `String`
+Default value: `''`
+
+Path to [Progressive Web App manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) you want to add information about the generated icons.
+
+
+
+
+
 #### options.indent
 Type: `String`
 Default value: `\t`
@@ -258,7 +284,10 @@ grunt.initConfig({
       tileBlackWhite: false,
       tileColor: "auto",
       html: 'build/out/index.html',
-      HTMLPrefix: "/images/icons/"
+      HTMLPrefix: "/images/icons/",
+      
+      pwa: true,
+      pwaManifest: "/manifest.webapp"
     },
     icons: {
       src: 'src/logo.png',

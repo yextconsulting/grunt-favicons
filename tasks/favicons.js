@@ -432,6 +432,8 @@ module.exports = function(grunt) {
                 if (needHTML) {
                     grunt.log.write('Updating HTML... ');
 
+	                options.indent = options.indent || ''; // default to '' incase false was passed
+
                     var timestamp = '?ts=' + new Date().getTime().toString();
 
                     var elements = "";

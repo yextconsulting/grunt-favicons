@@ -51,9 +51,9 @@ module.exports = function(grunt) {
 
         // Execute external command
         var execute = function(cmd) {
-            if (options.debug) {
+            // if (options.debug) {
                 console.log("\n\033[37m" + cmd + "\033[0m");
-            }
+            // }
             return exec(cmd);
         };
 

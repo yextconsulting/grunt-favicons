@@ -1,7 +1,7 @@
 {
   "name": "grunt-favicons",
-  "description": "Generate favicon.ico and icons for iOS, Android, Windows and Firefox (OS)",
-  "version": "0.8.0",
+  "description": "Generate favicon.ico and icons for iOS, Android, Windows, Firefox (OS) and Progressive Web Applications (PWA)",
+  "version": "0.9.0",
   "homepage": "https://github.com/gleero/grunt-favicons",
   "author": {
     "name": "Vladimir Perekladov",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gleero/grunt-favicons.git"
+    "url": "git://github.com/japrescott/grunt-favicons.git"
   },
   "bugs": {
-    "url": "https://github.com/gleero/grunt-favicons/issues"
+    "url": "https://github.com/japrescott/grunt-favicons/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/gleero/grunt-favicons/blob/master/LICENSE-MIT"
+      "url": "https://github.com/japrescott/grunt-favicons/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -29,20 +29,20 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "cheerio": "~0.12.1",
-    "sync-exec": "^0.6.1"
+    "cheerio": "0.22.x",
+    "sync-exec": "0.6.x"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.1",
-    "grunt-contrib-copy": "~0.4.1",
-    "image-size": "~0.1.5",
+    "grunt": "1.0.x",
+    "grunt-contrib-jshint": "1.1.x",
+    "grunt-contrib-clean": "1.0.x",
+    "grunt-contrib-nodeunit": "1.0.x",
+    "grunt-contrib-copy": "1.0.x",
+    "image-size": "0.5.x",
     "crypto": "0.0.3"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": ">0.4.1"
   },
   "keywords": [
     "gruntplugin",
@@ -55,6 +55,8 @@
     "android",
     "wp8",
     "firefox",
-    "firefox os"
+    "firefox os",
+    "progressive web application",
+    "pwa"
   ]
 }

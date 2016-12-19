@@ -95,6 +95,7 @@ module.exports = function(grunt) {
             // icon padding
             if (typeof(padding)==='number' && padding >= 0 && padding < 100) {
                 var thumb = Math.round((100 - padding) * parseInt(size.split("x")[0], 10) / 100);
+	            out[2] = thumb + "x" + thumb;
                 out = out.concat([
                     "-gravity",
                     "center",

@@ -215,6 +215,12 @@ Default value: `false`
 
 Make [Android Homescreen](https://developer.chrome.com/multidevice/android/installtohomescreen) app icon.
 
+#### options.androidIcons
+Type: `Boolean`
+Default value: `false`
+
+Make [Android Icons](https://developer.chrome.com/multidevice/android/installtohomescreen).
+
 
 #### options.pwa
 Type: `Boolean`
@@ -280,20 +286,22 @@ grunt.initConfig({
       precomposed: true,
       appleTouchBackgroundColor: "#e2b2c2",
       coast: true,
+      
       windowsTile: true,
       tileBlackWhite: false,
       tileColor: "auto",
+      
       html: 'build/out/index.html',
       HTMLPrefix: "/images/icons/",
       
       pwa: true,
-      pwaManifest: "/manifest.webapp"
+      pwaManifest: "/manifest.json"
     },
     icons: {
       src: 'src/logo.png',
       dest: 'build/images/icons'
     }
-  },
+  }
 })
 ```
 

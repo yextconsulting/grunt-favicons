@@ -1,13 +1,15 @@
 # grunt-favicons
 
-Clone of gleeros excellent grunt-favicons project!
+Clone of a Clone of gleeros excellent grunt-favicons project!
+
+**Fixes peer dependancy warning issue**
+
 Includes multiple improvements;
 - (new) iphonePlus support
 - (new) progressive web application (pwa) icon generation & manifest writing
 - (fix) svg transparency
 - (fix) no 'false' values in icons.html
 - (fix) typo in meta tag causing validation errors
-
 
 
 Generates all known types and sizes icons from PNG image. Uses ImageMagick.
@@ -68,7 +70,7 @@ cinst imagemagick.app
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-favicons --save-dev
+npm install grunt-favicons-redux --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
@@ -286,14 +288,14 @@ grunt.initConfig({
       precomposed: true,
       appleTouchBackgroundColor: "#e2b2c2",
       coast: true,
-      
+
       windowsTile: true,
       tileBlackWhite: false,
       tileColor: "auto",
-      
+
       html: 'build/out/index.html',
       HTMLPrefix: "/images/icons/",
-      
+
       pwa: true,
       pwaManifest: "/manifest.json"
     },

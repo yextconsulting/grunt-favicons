@@ -1,24 +1,23 @@
 {
-  "name": "grunt-favicons",
-  "description": "Generate favicon.ico and icons for iOS, Android, Windows, Firefox (OS) and Progressive Web Applications (PWA)",
-  "version": "0.9.0",
-  "homepage": "https://github.com/gleero/grunt-favicons",
+  "name": "grunt-favicons-redux",
+  "description": "Generate favicon.ico and icons for iOS, Android, Windows, Firefox (OS) and Progressive Web Applications (PWA), without peer dependancy errors on install",
+  "version": "0.9.1",
+  "homepage": "https://github.com/Pushplaybang/grunt-favicons",
   "author": {
-    "name": "Vladimir Perekladov",
-    "email": "gleero@gmail.com",
-    "url": "http://gleero.com/"
+    "name": "Paul van Zyl",
+    "url": "http://nonacreative.com/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/japrescott/grunt-favicons.git"
+    "url": "git:////github.com/Pushplaybang/grunt-favicons.git"
   },
   "bugs": {
-    "url": "https://github.com/japrescott/grunt-favicons/issues"
+    "url": "https://github.com/Pushplaybang/grunt-favicons/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/japrescott/grunt-favicons/blob/master/LICENSE-MIT"
+      "url": "https://github.com/Pushplaybang/grunt-favicons/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -40,9 +39,6 @@
     "grunt-contrib-copy": "1.0.x",
     "image-size": "0.5.x",
     "crypto": "0.0.3"
-  },
-  "peerDependencies": {
-    "grunt": ">0.4.1"
   },
   "keywords": [
     "gruntplugin",

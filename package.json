@@ -1,23 +1,22 @@
 {
-  "name": "grunt-favicons-redux",
+  "name": "grunt-favicons-2018",
   "description": "Generate favicon.ico and icons for iOS, Android, Windows, Firefox (OS) and Progressive Web Applications (PWA), without peer dependancy errors on install",
-  "version": "0.9.1",
-  "homepage": "https://github.com/Pushplaybang/grunt-favicons",
+  "version": "0.9.2",
+  "homepage": "https://github.com/ChristianYaglenski/grunt-favicons",
   "author": {
-    "name": "Paul van Zyl",
-    "url": "http://nonacreative.com/"
+    "name": "Christian Yaglenski"
   },
   "repository": {
     "type": "git",
-    "url": "git:////github.com/Pushplaybang/grunt-favicons.git"
+    "url": "git:////github.com/ChristianYaglenski/grunt-favicons.git"
   },
   "bugs": {
-    "url": "https://github.com/Pushplaybang/grunt-favicons/issues"
+    "url": "https://github.com/ChristianYaglenski/grunt-favicons/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/Pushplaybang/grunt-favicons/blob/master/LICENSE-MIT"
+      "url": "https://github.com/ChristianYaglenski/grunt-favicons/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",

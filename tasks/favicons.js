@@ -8,7 +8,7 @@
 
 var path = require('path');
 var fs = require('fs');
-var exec = require("sync-exec");
+var spawn = require("child_process");
 
 module.exports = function(grunt) {
 
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
             if (options.debug) {
                 console.log("\n\033[37m" + cmd + "\033[0m");
             }
-            return exec(cmd);
+            return spawn.execSync(cmd);
         };
 
         // Convert image with imagemagick
@@ -504,7 +504,7 @@ module.exports = function(grunt) {
                 // Cleanup
                 if (options.regular) {
                     ['16x16', '32x32', '48x48'].forEach(function(size) {
-                        fs.unlink(path.join(f.dest, size + '.png'));
+                        fs.unlinkSync(path.join(f.dest, size + '.png'));
                     });
                 }
 

@@ -2,21 +2,21 @@
   "name": "grunt-favicons-2018",
   "description": "Generate favicon.ico and icons for iOS, Android, Windows, Firefox (OS) and Progressive Web Applications (PWA), without peer dependancy errors on install",
   "version": "0.9.3",
-  "homepage": "https://github.com/duvallj/grunt-favicons",
+  "homepage": "https://github.com/yextconsulting/grunt-favicons",
   "author": {
     "name": "Christian Yaglenski"
   },
   "repository": {
     "type": "git",
-    "url": "git:////github.com/duvallj/grunt-favicons.git"
+    "url": "git:////github.com/yextconsulting/grunt-favicons.git"
   },
   "bugs": {
-    "url": "https://github.com/duvallj/grunt-favicons/issues"
+    "url": "https://github.com/yextconsulting/grunt-favicons/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/duvallj/grunt-favicons/blob/master/LICENSE-MIT"
+      "url": "https://github.com/yextconsulting/grunt-favicons/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
